@@ -1,1 +1,1 @@
-Repositórios para guardar códigos de meu interesse
+Repositórios para guardar códigos do meu interesse
