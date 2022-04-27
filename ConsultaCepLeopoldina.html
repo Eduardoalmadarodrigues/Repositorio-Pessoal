@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head font-size=20%>
+    <meta charset="UTF-8">
+    <title>ConsultaCep</title>       
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type = "text/javascript" language="javascript">
+	
+    var rua = prompt("Digite a rua");
+	if (rua.length==0){
+		document.write("<br/><br/>Você não digitou nada!!!!<br/><br/>Atualize a página para consultar novamente.");
+	}
+	if ((rua.length>0)&&(rua.length<3)){
+		document.write("<br/><br/>A busca deve conter ao menos 3 letras. Você digitou apenas "+ rua.length +".<br/><br/>Atualize a página para consultar novamente.");
+	}
+	$.getJSON('https://viacep.com.br/ws/mg/leopoldina/' + rua + '/json', function(rua) {   
+		for ( var a = 0 ; a < rua.length ; a++ ){
+			document.write("<br/><br/>" + rua[a].logradouro +" /\/\/ "+ rua[a].bairro+" /\/\/ CEP: " + rua[a].cep);
+			}
+			if ( rua.length == 0 ) {
+				document.write("<br/><br/>Nenhum CEP encontrado!<br/><br/>Tente pesquisar retirando nomes que possam levar a erros.<br/><br/>Os endereços não precisam estar escritos até o final, como por exemplo: avenida dos exp<br/><br/>Você também pode digitar só um nome da rua, como sebastião. Será mostrado todas as ruas que contenham sebastião.<br/><br/>Não é necessário acentuar palavras.<br/><br/>Atualize a página para consultar novamente.");
+		}
+	});
+      </script>
+</head>
+<body>
+</body>
+</html>
